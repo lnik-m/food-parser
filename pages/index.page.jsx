@@ -13,12 +13,12 @@ const Home = () => {
             <h3>It is button</h3>
             <MainButton link={'/food'}>Food page</MainButton>
 
-            <h3>It is using of Link (inside our app)</h3>
-            <Link href="/food.page">
-                <a>Way to food page</a>
-            </Link>
-        </div>
-    );
+      <h3>It is using of Link (inside our app)</h3>
+      <Link href="/food.page">
+        <a>Way to food page</a>
+      </Link>
+    </div>
+  );
 };
 
 export default Home;
