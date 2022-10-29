@@ -32,7 +32,7 @@ const Home = () => {
 
       <h3>Groceries from api</h3>
       {food.map(el => (
-        <TextBlock>{el}</TextBlock>
+        <TextBlock key={el}>{el}</TextBlock>
       ))}
     </div>
   )

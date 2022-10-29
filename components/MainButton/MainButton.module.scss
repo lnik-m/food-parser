@@ -1,23 +1,23 @@
 @import "../../styles/common";
 
-
 .button {
-    background: rgb(100, 100, 150,);
-    @extend %button;
+  background: rgb(100 100 150);
+
+  @extend %button;
 }
 
 .button:hover {
-    @extend %shadow;
+  @extend %shadow;
 }
 
 .button:active {
-    background: rgb(100, 100, 150,);
+  background: rgb(100 100 150);
 
-    @extend %shadow;
+  @extend %shadow;
 }
 
 @media (max-width: 900px) {
-    .button {
-        font-size: 0.8em;
-    }
+  .button {
+    font-size: 0.8em;
+  }
 }

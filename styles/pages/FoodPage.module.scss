@@ -1,21 +1,20 @@
 @import "../common";
 
-
 .container {
-    margin: 1rem;
-    background-color: rgb(100, 100, 150,);
+  margin: 1rem;
+  background-color: rgb(100 100 150);
 
-    p {
-        color: #ffffff;
+  p {
+    color: #fff;
 
-        @extend %shadow;
+    @extend %shadow;
+  }
+
+  .header {
+    color: #000;
+
+    &:hover {
+      color: #ff00a2;
     }
-
-    .header {
-        color: #000;
-
-        &:hover {
-            color: #FF00A2;
-        }
-    }
+  }
 }
