@@ -14,7 +14,7 @@ const Home = () => {
             <MainButton link={'/food'}>Food page</MainButton>
 
             <h3>It is using of Link (inside our app)</h3>
-            <Link href="/food">
+            <Link href="/food.page">
                 <a>Way to food page</a>
             </Link>
         </div>
