@@ -10,9 +10,11 @@
     "lint": "eslint --fix --ext .js,.jsx . && stylelint \"**/*.scss\" --fix && prettier -w **/*.{js,jsx}"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.6",
     "next": "12.3.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-redux": "^8.0.4"
   },
   "devDependencies": {
     "eslint": "^8.26.0",

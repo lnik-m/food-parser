@@ -13,16 +13,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First install dependencies:
 
 ```bash
-npm install
-# or
 yarn install
 ```
 
 Then, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
@@ -35,20 +31,10 @@ You can start editing the page by modifying `pages/index.page.jsx`. The page aut
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 ## Linting
-For linting js and jsx code:
+For linting code:
 
 ```bash
-npm run lint
-# or
 yarn lint
-```
-
-For linting scss or css files:
-
-```bash
-npm run stylelint
-# or
-yarn stylelint
 ```
 
 ## Learn More

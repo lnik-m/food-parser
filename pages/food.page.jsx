@@ -1,10 +1,31 @@
 import styles from '../styles/pages/FoodPage.module.scss'
+import { useState } from 'react'
 
 const FoodPage = () => {
+  const [message, setMessage] = useState('')
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const data = {
+      message,
+    };
+
+    fetch('/api/contact', {
+      method: 'post',
+      body: JSON.stringify(data),
+    }).then();
+  };
+
   return (
     <div className={styles.container}>
-      <h1 className={styles.header}>There will be food</h1>
-      <p>now it is nothing here...</p>
+      <form onSubmit={handleSubmit}>
+      <textarea
+        id="message"
+        rows="4"
+        onChange={e => setMessage(e.target.value)}
+      />
+        <button type="submit">Send</button>
+      </form>
     </div>
   )
 }
