@@ -13,7 +13,8 @@ const FoodPage = () => {
     fetch('/api/contact', {
       method: 'post',
       body: JSON.stringify(data),
-    }).then();
+    }).then(r => r.json())
+      .then(r => alert(r.isGood))
   };
 
   return (
