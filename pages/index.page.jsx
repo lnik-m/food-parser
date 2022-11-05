@@ -9,16 +9,13 @@ import {increment, decrement} from '../slices/counterSlice'
 import TextBlock from '../components/TextBlock/TextBlock'
 import CounterShow from '../components/CounterShow/CounterShow'
 
+import {api} from '../api'
+
 const Home = () => {
   const [food, setFood] = useState([])
-  const fetchFood = () => {
-    return fetch('/api/food')
-      .then(r => r.json())
-      .then(r => r)
-  }
 
   useEffect(() => {
-    fetchFood().then(r => setFood(r.groceries))
+    api.food.get.getGroceries().then(r => setFood(r.groceries))
   })
 
   const count = useSelector(state => state.counter.value)

@@ -1,21 +1,17 @@
 import styles from '../styles/pages/FoodPage.module.scss'
 import { useState } from 'react'
+import { api } from '../api'
 
 const FoodPage = () => {
   const [message, setMessage] = useState('')
 
   const handleSubmit = e => {
-    e.preventDefault();
+    e.preventDefault()
     const data = {
       message,
-    };
-
-    fetch('/api/contact', {
-      method: 'post',
-      body: JSON.stringify(data),
-    }).then(r => r.json())
-      .then(r => alert(r.isGood))
-  };
+    }
+    api.contact.checkContact(data).then(r => alert(r.isGood))
+  }
 
   return (
     <div className={styles.container}>
