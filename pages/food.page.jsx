@@ -25,7 +25,7 @@ const FoodPage = () => {
       <form onSubmit={handleSubmit}>
         <textarea
           id="message"
-          placeholder='пицца'
+          placeholder="пицца"
           rows="4"
           onChange={e => setMessage(e.target.value)}
         />
