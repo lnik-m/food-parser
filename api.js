@@ -1,23 +1,32 @@
 const registerEndpoint = (path, method = 'get') => {
-  return (requestValues=null) => {
-    const res = (method==='get') ? fetch(`/api/${path}`) :
-      fetch(`/api/${path}`, {
+  return async (requestValues, headers = undefined) => {
+    try {
+      const response = await fetch(`/api/${path}`, {
         method,
+        headers: {
+          'Content-Type': 'application/json',
+          ...(headers ?? {})
+        },
         body: JSON.stringify(requestValues)
       })
-    return res.then(r => r.json()).catch(err => alert(err.message))
+      if (!response.ok) {
+        console.error(`API request to ${path} failed`)
+      }
+      return await response.json()
+    } catch (error) {
+      console.error(error)
+      return { ok: false, response: undefined }
+    }
   }
 }
-
 
 export const api = {
   food: {
     get: {
-      getGroceries: registerEndpoint('/food'),
-    },
+      getGroceries: registerEndpoint('/food')
+    }
   },
-  contact : {
-    checkContact: registerEndpoint('/contact', 'post'),
-  },
+  contact: {
+    doSearch: registerEndpoint('/search', 'post')
+  }
 }
-

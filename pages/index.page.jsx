@@ -5,11 +5,11 @@ import styles from '../styles/pages/Home.module.scss'
 import MainButton from '../components/MainButton/MainButton'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {increment, decrement} from '../slices/counterSlice'
+import { increment, decrement } from '../slices/counterSlice'
 import TextBlock from '../components/TextBlock/TextBlock'
 import CounterShow from '../components/CounterShow/CounterShow'
 
-import {api} from '../api'
+import { api } from '../api'
 
 const Home = () => {
   const [food, setFood] = useState([])

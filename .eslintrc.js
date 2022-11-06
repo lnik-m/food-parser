@@ -8,5 +8,8 @@ module.exports = {
   ],
   rules: {
     'prefer-const': 2
+  },
+  env: {
+    es6: true
   }
 }
