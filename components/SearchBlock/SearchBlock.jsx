@@ -5,7 +5,7 @@ import styles from './SearchBlock.module.scss'
  {
     return (
         <form>
-        <input className={styles.searchBlock}
+        <input className={styles["search-Block"]}
           id="message"
           placeholder={placeholder}
         />
