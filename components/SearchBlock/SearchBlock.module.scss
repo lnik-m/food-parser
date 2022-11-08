@@ -1,17 +1,41 @@
-.search-Block{
-    width: 50%;
-    margin: 3% 1px 1px 20%;
-    padding: 3px;
-    display: inline-flex;
-    border: 3px rgb(184 100 167) solid;
-    border-radius: 10px;
+@import "styles/common";
+
+.container {
+    display: grid;
+    grid-template-areas: "search" "res";
+
+    justify-content: center;
+
+    gap: 2rem;
 }
 
-.button{
-    position: relative;
-    left: null;
-    background-color: rgb(184 100 167);
+.searchForm {
+    grid-area: search;
+
+    display: flex;
+    justify-content: space-between;
+
+    width: 50vw;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+
+    border: 3px $violet solid;
+    border-radius: 0.5rem;
+
+    gap: 1rem;
 }
 
+.input {
+    width: 100%;
+}
+
+.button {
+    grid-area: btn;
+    color: $violet;
+    font-size: 1.5rem;
+}
+
+.result {
+    grid-area: res;
+}
 
 

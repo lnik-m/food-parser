@@ -10,6 +10,9 @@
     "lint": "eslint --fix --ext .js,.jsx . && stylelint \"**/*.scss\" --fix && prettier -w **/*.{js,jsx}"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@reduxjs/toolkit": "^1.8.6",
     "next": "12.3.1",
     "puppeteer": "^19.2.2",
