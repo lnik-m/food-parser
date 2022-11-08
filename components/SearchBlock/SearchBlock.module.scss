@@ -1,6 +1,4 @@
-@import "components/MainButton/MainButton.module.scss";
-
-.search-block{
+.searchBlock{
     width: 50%;
     margin: 3% 1px 1px 20%;
     padding: 3px;
@@ -12,7 +10,6 @@
 .button{
     position: relative;
     left: 10px;
-    transform: translateY(-55%);
     background-color: rgb(184, 100, 167);
 }
 

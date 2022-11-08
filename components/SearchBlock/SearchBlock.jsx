@@ -1,15 +1,15 @@
+import MainButton from '../MainButton/MainButton'
 import styles from './SearchBlock.module.scss'
 
- const SearchBlock = ({children}) =>
+ const SearchBlock = ({placeholder}) =>
  {
     return (
         <form>
-        <textarea className={styles['search-block']}
+        <input className={styles.searchBlock}
           id="message"
-          placeholder='лолипопс'
-          rows={4}
+          placeholder={placeholder}
         />
-        <button className={styles.button} type="submit">{children}Send</button>
+        <MainButton>Send</MainButton>
       </form>
     )
     
