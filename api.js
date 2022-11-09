@@ -26,7 +26,8 @@ export const api = {
       getGroceries: registerEndpoint('/food')
     }
   },
-  contact: {
-    doSearch: registerEndpoint('/search', 'post')
+  search: {
+    doSearch: registerEndpoint('/search', 'post'),
+    mockSearch: registerEndpoint('/mock-search'),
   }
 }
