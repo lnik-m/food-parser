@@ -20,14 +20,15 @@ import { addSearch } from '../../slices/searchSlice'
      setLoading(true)
      e.preventDefault()
 
-     const data = {
-       message
-     }
+     // todo: change mockSearch to doSearch(data) and uncomment const data
+     // const data = {
+     //   message
+     // }
 
      dispatch(addSearch(message))
 
-     api.contact
-       .doSearch(data)
+     api.search
+       .mockSearch()
        .then(r => setData(r.data))
        .then(() => setLoading(false))
    }
@@ -50,7 +51,7 @@ import { addSearch } from '../../slices/searchSlice'
         {isLoading ?
           <Loading />
            :
-          <SearchResGallery data={data} />
+          <SearchResGallery className={styles.result} data={data} />
         }
       </div>
     )
