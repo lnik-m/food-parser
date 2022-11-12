@@ -21,15 +21,15 @@ import { addSearch } from '../../slices/searchSlice'
      e.preventDefault()
 
      // todo: change mockSearch to doSearch(data) and uncomment const data
-     // const data = {
-     //   message
-     // }
+      const data = {
+        message
+      }
 
      dispatch(addSearch(message))
 
      api.search
-       .mockSearch()
-       .then(r => setData(r.data))
+       .doSearch(data)
+       .then(r => setData(r))
        .then(() => setLoading(false))
    }
 

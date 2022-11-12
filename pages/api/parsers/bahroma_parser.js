@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer')
-
+// todo(michael) correct return type (see in mock-search/endpoint.js)
 class BahromaParser {
+    // todo(michael) delete name
     static name = 'BAHROMA'
 
     static async parse(message) {
