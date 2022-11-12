@@ -1,6 +1,7 @@
 import styles from './SearchResBlock.module.scss'
 import {faImage, faArrowRight} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Image from 'next/image'
 
 
 const SearchResBlock = ({item}) => {
@@ -12,7 +13,7 @@ const SearchResBlock = ({item}) => {
         </div>
 
         {item.imgLink.length > 0 ?
-          <img src={item.imgLink} alt={'imgLink'} className={styles.img} />
+          <Image src={item.imgLink} alt={'imgLink'} className={styles.img} />
           :
           <div className={styles.img}>
             <FontAwesomeIcon icon={faImage} fontSize={'4rem'} color={'white'}/>
