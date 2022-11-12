@@ -20,7 +20,6 @@ import { addSearch } from '../../slices/searchSlice'
      setLoading(true)
      e.preventDefault()
 
-     // todo: change mockSearch to doSearch(data) and uncomment const data
       const data = {
         message
       }
@@ -29,7 +28,7 @@ import { addSearch } from '../../slices/searchSlice'
 
      api.search
        .doSearch(data)
-       .then(r => setData(r))
+       .then(r => setData(r.data))
        .then(() => setLoading(false))
    }
 
