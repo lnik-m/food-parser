@@ -3,24 +3,18 @@
 .container {
     display: grid;
     grid-template-areas: "search" "res";
-
     justify-items: center;
-
     gap: 2rem;
 }
 
 .searchForm {
     grid-area: search;
-
     display: flex;
     justify-content: space-between;
-
     width: 50vw;
     padding: 0.5rem 1rem 0.5rem 0.5rem;
-
     border: 3px $violet solid;
     border-radius: 0.5rem;
-
     gap: 1rem;
 }
 
