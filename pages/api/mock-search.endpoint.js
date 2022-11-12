@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 const mockSearchHandler = async (req, res) => {
   const data = [
     {

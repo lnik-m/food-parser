@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 import { parsers } from './parsers/parsers'
 
 const searchHandler = async (req, res) => {

@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 const puppeteer = require('puppeteer')
 // todo(michael) correct return type (see in mock-search/endpoint.js)
 class BahromaParser {

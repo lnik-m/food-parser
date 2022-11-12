@@ -21,11 +21,6 @@ const registerEndpoint = (path, method = 'get') => {
 }
 
 export const api = {
-  food: {
-    get: {
-      getGroceries: registerEndpoint('/food')
-    }
-  },
   search: {
     doSearch: registerEndpoint('/search', 'post'),
     mockSearch: registerEndpoint('/mock-search'),
