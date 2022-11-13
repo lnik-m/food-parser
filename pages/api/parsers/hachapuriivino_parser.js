@@ -30,7 +30,17 @@ class HachapuriivinoParser {
                 el => el.src
             )
             if (name.toLowerCase().includes(message.toLowerCase()))
-                items.push({ name: name, description: '', price: price, site: { name: 'Хачапури и вино', link: 'https://www.hachapuriivino.ru/', }, link: '', imgLink: imgLink })
+                items.push({
+                    name: name,
+                    description: '',
+                    price: price,
+                    site: {
+                        name: 'Хачапури и вино',
+                        link: 'https://www.hachapuriivino.ru/',
+                    },
+                    link: '',
+                    imgLink: imgLink
+                })
         }
 
         await browser.close()

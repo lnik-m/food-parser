@@ -30,7 +30,17 @@ class BahromaParser {
                 el => el.src
             )
             if (name.toLowerCase().includes(message.toLowerCase()))
-                items.push({ name: name, description: '', price: price, site: { name: 'BAHROMA', link: 'https://www.bahroma1.ru/all-menu.html', }, link: '', imgLink: imgLink })
+                items.push({
+                    name: name,
+                    description: '',
+                    price: price,
+                    site: {
+                        name: 'BAHROMA',
+                        link: 'https://www.bahroma1.ru/all-menu.html',
+                    },
+                    link: '',
+                    imgLink: imgLink
+                })
         }
 
         await browser.close()
