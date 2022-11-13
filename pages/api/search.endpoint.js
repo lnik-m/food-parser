@@ -1,5 +1,6 @@
 import { parsers } from './parsers/parsers'
 import { sortByPrice } from './parsers/utils'
+import { getBrowser } from './parsers/puppeteer_browser'
 
 const searchHandler = async (req, res) => {
   let data = []
@@ -8,8 +9,10 @@ const searchHandler = async (req, res) => {
     const parseResults = await Promise.all(
       parsers.map(parser => parser.parse(req.body.message))
     )
+    const browser = await getBrowser()
+    await browser.close()
     for (const items of parseResults) {
-        data = [...data, ...items]
+      data = [...data, ...items]
     }
     data = data.sort(sortByPrice)
   } else

@@ -23,7 +23,6 @@ class DominosParser {
         )
     )
     await page.close()
-    await browser.close()
     return items
   }
 

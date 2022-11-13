@@ -42,8 +42,7 @@ class HachapuriivinoParser {
                     imgLink: imgLink
                 })
         }
-
-        await browser.close()
+        await page.close()
         return items
     }
 }

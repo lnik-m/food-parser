@@ -42,8 +42,7 @@ class BahromaParser {
                     imgLink: imgLink
                 })
         }
-
-        await browser.close()
+        await page.close()
         return items
     }
 }
