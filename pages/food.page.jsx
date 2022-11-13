@@ -2,6 +2,7 @@ import styles from '../styles/pages/FoodPage.module.scss'
 import { useState } from 'react'
 import { api } from '../api'
 import TextBlock from '../components/TextBlock/TextBlock'
+import SearchBlock from '../components/SearchBlock/SearchBlock'
 
 const FoodPage = () => {
   const [message, setMessage] = useState('')
@@ -22,7 +23,8 @@ const FoodPage = () => {
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit}>
+      <SearchBlock></SearchBlock>
+       <form onSubmit={handleSubmit}>
         <textarea
           id="message"
           placeholder='пицца'
