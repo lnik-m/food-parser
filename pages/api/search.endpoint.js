@@ -1,4 +1,5 @@
 import { parsers } from './parsers/parsers'
+import { sortByPrice } from './parsers/utils'
 
 const searchHandler = async (req, res) => {
   let data = []
@@ -8,7 +9,7 @@ const searchHandler = async (req, res) => {
       const items = await parser.parse(req.body.message)
 
       if (items.length !== 0) {
-        data = [...data, ...items]
+        data = [...data, ...items].sort(sortByPrice)
       }
     }
   } else

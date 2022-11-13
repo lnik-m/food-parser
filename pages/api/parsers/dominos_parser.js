@@ -1,4 +1,4 @@
-import { autoScroll, sortByPrice } from './utils'
+import { autoScroll } from './utils'
 import { getBrowser } from './puppeteer_browser'
 
 class DominosParser {
@@ -21,7 +21,6 @@ class DominosParser {
             this.checkIncluding(pizza.name, message) ||
             this.checkIncluding(pizza.description, message)
         )
-        .sort(sortByPrice)
     )
     await page.close()
     await browser.close()
