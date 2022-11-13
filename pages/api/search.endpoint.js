@@ -1,5 +1,3 @@
-// noinspection JSUnusedGlobalSymbols
-
 import { parsers } from './parsers/parsers'
 
 const searchHandler = async (req, res) => {
@@ -13,7 +11,10 @@ const searchHandler = async (req, res) => {
         data = [...data, ...items]
       }
     }
-  }
+  } else
+    return res.status(404).json({
+      error: 'Not found'
+    })
 
   res.status(200).json({ data })
 }

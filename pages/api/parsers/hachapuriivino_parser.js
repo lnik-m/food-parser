@@ -7,6 +7,7 @@ class HachapuriivinoParser {
     static name = 'Хачапури & Вино'
 
     static async parse(message) {
+        // todo(michael) use getBrowser() from puppeteer_browser.js
         const browser = await puppeteer.launch({ headless: true })
         const page = await browser.newPage()
         await page.goto('https://www.hachapuriivino.ru/')
