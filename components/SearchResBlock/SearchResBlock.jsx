@@ -13,7 +13,8 @@ const SearchResBlock = ({item}) => {
         </div>
 
         {item.imgLink.length > 0 ?
-          <Image src={item.imgLink} alt={'imgLink'} className={styles.img} />
+          // todo(Maria) fix
+          <img src={item.imgLink} alt={'imgLink'} className={styles.img} />
           :
           <div className={styles.img}>
             <FontAwesomeIcon icon={faImage} fontSize={'4rem'} color={'white'}/>

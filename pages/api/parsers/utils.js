@@ -20,4 +20,8 @@ async function autoScroll(page) {
   })
 }
 
-export default autoScroll
+function sortByPrice(x, y) {
+  return x.price - y.price
+}
+
+export { autoScroll, sortByPrice }

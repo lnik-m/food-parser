@@ -1,4 +1,4 @@
-import autoScroll from './utils'
+import { autoScroll, sortByPrice } from './utils'
 
 const puppeteer = require('puppeteer')
 
@@ -19,13 +19,14 @@ class DominosParser {
 
     await autoScroll(page)
     const items = await this.findItems(page).then(pizzas =>
-      pizzas.filter(
-        pizza =>
-          this.checkIncluding(pizza.name, message) ||
-          this.checkIncluding(pizza.description, message)
-      )
+      pizzas
+        .filter(
+          pizza =>
+            this.checkIncluding(pizza.name, message) ||
+            this.checkIncluding(pizza.description, message)
+        )
+        .sort(sortByPrice)
     )
-
     await page.close()
     await browser.close()
     return items
