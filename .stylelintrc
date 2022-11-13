@@ -1,5 +1,8 @@
 {
   "customSyntax": "postcss-scss",
+  "rules": {
+    "selector-class-pattern": null
+  },
   "extends": [
     "stylelint-config-standard",
     "stylelint-config-standard-scss",
