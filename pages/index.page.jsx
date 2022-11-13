@@ -12,8 +12,7 @@ const Home = () => {
       <SearchBlock placeholder={'пицца'} />
 
 
-      {/*todo: написать стили в файле Layout.module.scss, чтобы она крутилась, после - отсюда удалить*/}
-      <Loading />
+      
     </div>
   )
 }

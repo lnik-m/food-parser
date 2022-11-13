@@ -6,7 +6,13 @@
   padding: 1rem;
 }
 
-.site {}
+.site {
+  padding: 0.6rem;
+  max-width: 14rem;
+  background-color: #e6bddb;
+  border-radius: 4px;
+  max-width: 50rem;
+}
 
 .img {
   background-color: $gray;
@@ -18,7 +24,7 @@
 .description {}
 
 .priceAndLink {
-
+  
   .price {}
 
   .link{}

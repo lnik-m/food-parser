@@ -10,6 +10,9 @@ const SearchResBlock = ({item}) => {
 
         <div className={styles.site}>
           <a href={item.site.link} target={'_blank'} rel={'noreferrer'}>{item.site.name}</a>
+          
+          <button>
+          </button> 
         </div>
 
         {item.imgLink.length > 0 ?
@@ -23,15 +26,15 @@ const SearchResBlock = ({item}) => {
         }
 
         <div className={styles.title}>
-          Название: {item.name}
+          <b>Название: </b>{item.name}
         </div>
 
         {item.description.length > 0 &&
           <div className={styles.description}>
-            Описание: {item.description}
+            <b>Описание: </b>{item.description}
           </div>
         }
-
+        
         <div className={styles.priceAndLink}>
           <div className={styles.price}>
             <strong>{item.price}.-</strong>
