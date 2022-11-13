@@ -10,4 +10,5 @@ const MyApp = ({ Component, pageProps }) => {
   )
 }
 
+// noinspection JSUnusedGlobalSymbols
 export default MyApp

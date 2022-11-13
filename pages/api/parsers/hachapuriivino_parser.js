@@ -1,6 +1,9 @@
-const puppeteer = require('puppeteer')
+// noinspection JSUnusedGlobalSymbols
 
+const puppeteer = require('puppeteer')
+// todo(michael) correct return type (see in mock-search/endpoint.js)
 class HachapuriivinoParser {
+    // todo(michael) delete name
     static name = 'Хачапури & Вино'
 
     static async parse(message) {

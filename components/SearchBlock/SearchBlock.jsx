@@ -20,13 +20,13 @@ import { addSearch } from '../../slices/searchSlice'
      setLoading(true)
      e.preventDefault()
 
-     const data = {
-       message
-     }
+      const data = {
+        message
+      }
 
      dispatch(addSearch(message))
 
-     api.contact
+     api.search
        .doSearch(data)
        .then(r => setData(r.data))
        .then(() => setLoading(false))
@@ -50,7 +50,7 @@ import { addSearch } from '../../slices/searchSlice'
         {isLoading ?
           <Loading />
            :
-          <SearchResGallery data={data} />
+          <SearchResGallery className={styles.result} data={data} />
         }
       </div>
     )

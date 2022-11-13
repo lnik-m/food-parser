@@ -1,8 +1,8 @@
+import { autoScroll, sortByPrice } from './utils'
+
 const puppeteer = require('puppeteer')
 
 class DominosParser {
-  static name = 'DominosPizza'
-
   static async parse(message) {
     const browser = await puppeteer.launch({
       headless: true,
@@ -12,37 +12,21 @@ class DominosParser {
     await page.goto('https://spb.dominospizza.ru/', {
       waitUntil: 'domcontentloaded'
     })
+    await page.setViewport({
+      width: 1200,
+      height: 800
+    })
 
-    let items = (
-      await Promise.all(
-        (
-          await page.$$('[itemprop="name"]')
-        ).map(async el => await el.evaluate(el => el.innerHTML))
-      )
-    ).map(el => ({ name: el, description: '', foundBy: '' }))
-
-    const descriptions = await Promise.all(
-      (
-        await page.$$('[itemprop="description"]')
-      ).map(async el => {
-        return await el.evaluate(el => el.innerHTML)
-      })
+    await autoScroll(page)
+    const items = await this.findItems(page).then(pizzas =>
+      pizzas
+        .filter(
+          pizza =>
+            this.checkIncluding(pizza.name, message) ||
+            this.checkIncluding(pizza.description, message)
+        )
+        .sort(sortByPrice)
     )
-
-    for (let i = 0; i < descriptions.length; i++) {
-      items[i].description = descriptions[i]
-    }
-    items = items
-      .filter(
-        item =>
-          this.checkIncluding(item.name, message) ||
-          this.checkIncluding(item.description, message)
-      )
-      .map(item =>
-        this.checkIncluding(item.name, message)
-          ? { ...item, foundBy: 'name' }
-          : { ...item, foundBy: 'description' }
-      )
     await page.close()
     await browser.close()
     return items
@@ -50,6 +34,54 @@ class DominosParser {
 
   static checkIncluding(source, element) {
     return source.toLowerCase().includes(element.toLowerCase())
+  }
+
+  static async findItems(page) {
+    const items = []
+    let i = 1
+    while (i) {
+      const pizza = await page.$(`[id="product_pizza_${i}"]`)
+      if (pizza === null || pizza === undefined) break
+
+      const item = {
+        name: await this.findChildByItemProp(
+          pizza,
+          'name',
+          child => child.innerHTML
+        ),
+        description: await this.findChildByItemProp(
+          pizza,
+          'description',
+          child => child.innerHTML
+        ),
+        price: await this.findPrice(pizza),
+        site: {
+          name: 'DominosPizza',
+          link: 'https://spb.dominospizza.ru/'
+        },
+        link: '',
+        imgLink: await this.findChildByItemProp(
+          pizza,
+          'image',
+          child => child.src
+        )
+      }
+      items.push(item)
+      i++
+    }
+    return items
+  }
+
+  static async findChildByItemProp(element, itemProp, callback) {
+    return await element.$eval(`[itemprop="${itemProp}"]`, callback)
+  }
+
+  static async findPrice(element) {
+    return await element.$eval('footer', el =>
+      parseInt(
+        el.getElementsByTagName('div')[1].innerHTML.replace(/[^0-9.]/g, '')
+      )
+    )
   }
 }
 
