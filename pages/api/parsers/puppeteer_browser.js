@@ -6,9 +6,12 @@ const getBrowser = async () => {
     const executablePath = await chromium.executablePath
     if (executablePath != null) {
       return await puppeteerCore.launch({
-        args: chromium.args,
         headless: true,
-        executablePath
+        executablePath,
+        args: [...chromium.args, "--disable-web-security"],
+        defaultViewport: chromium.defaultViewport,
+        ignoreHTTPSErrors: true,
+        ignoreDefaultArgs: ['--disable-extensions'],
       })
     } else {
       const puppeteer = require('puppeteer')
