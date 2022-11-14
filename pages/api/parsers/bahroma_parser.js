@@ -1,15 +1,18 @@
 // noinspection JSUnusedGlobalSymbols
+import { getBrowser } from './puppeteer_browser'
 
-const puppeteer = require('puppeteer')
-// todo(michael) correct return type (see in mock-search/endpoint.js)
 class BahromaParser {
-    // todo(michael) delete name
-    static name = 'BAHROMA'
 
     static async parse(message) {
-        const browser = await puppeteer.launch({ headless: true })
+        const browser = await getBrowser()
         const page = await browser.newPage()
-        await page.goto('https://www.bahroma1.ru/all-menu.html')
+        await page.goto('https://www.bahroma1.ru/all-menu.html', {
+            waitUntil: 'domcontentloaded'
+        })
+        await page.setViewport({
+            width: 1200,
+            height: 800
+        })
 
         const items = []
         const elements = await page.$$('.catalog-item', el => el)
@@ -18,17 +21,25 @@ class BahromaParser {
                 '.catalog-item__title',
                 el => el.innerText
             )
-            const description = await elements[i].$eval(
+            const price = await elements[i].$eval(
                 '.catalog-item__price',
-                el => el.innerText
+                el => el.innerText.replace(/[^0-9]/g, '')
+            )
+            const imgLink = await elements[i].$eval(
+                '.catalog-item__image > img',
+                el => el.src
             )
             if (name.toLowerCase().includes(message.toLowerCase()))
-                items.push({ name: name, description: description, foundBy: 'name' })
-            else if (description.toLowerCase().includes(message.toLowerCase()))
                 items.push({
                     name: name,
-                    description: description,
-                    foundBy: 'description'
+                    description: '',
+                    price: price,
+                    site: {
+                        name: 'BAHROMA',
+                        link: 'https://www.bahroma1.ru/all-menu.html',
+                    },
+                    link: '',
+                    imgLink: imgLink
                 })
         }
 

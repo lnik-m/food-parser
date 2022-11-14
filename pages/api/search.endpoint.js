@@ -1,6 +1,5 @@
-// noinspection JSUnusedGlobalSymbols
-
 import { parsers } from './parsers/parsers'
+import { sortByPrice } from './parsers/utils'
 
 const searchHandler = async (req, res) => {
   let data = []
@@ -13,7 +12,11 @@ const searchHandler = async (req, res) => {
         data = [...data, ...items]
       }
     }
-  }
+    data = data.sort(sortByPrice)
+  } else
+    return res.status(404).json({
+      error: 'Not found'
+    })
 
   res.status(200).json({ data })
 }

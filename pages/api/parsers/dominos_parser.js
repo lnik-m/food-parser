@@ -1,13 +1,9 @@
-import { autoScroll, sortByPrice } from './utils'
-
-const puppeteer = require('puppeteer')
+import { autoScroll } from './utils'
+import { getBrowser } from './puppeteer_browser'
 
 class DominosParser {
   static async parse(message) {
-    const browser = await puppeteer.launch({
-      headless: true,
-      ignoreHTTPSErrors: true
-    })
+    const browser = await getBrowser()
     const page = await browser.newPage()
     await page.goto('https://spb.dominospizza.ru/', {
       waitUntil: 'domcontentloaded'
@@ -25,7 +21,6 @@ class DominosParser {
             this.checkIncluding(pizza.name, message) ||
             this.checkIncluding(pizza.description, message)
         )
-        .sort(sortByPrice)
     )
     await page.close()
     await browser.close()

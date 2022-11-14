@@ -1,6 +1,5 @@
 // Function for autoscroll while parsing
 // Note: some content can't be loaded if page isn't scrolled to it
-
 async function autoScroll(page) {
   await page.evaluate(async () => {
     await new Promise(resolve => {

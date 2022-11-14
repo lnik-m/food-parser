@@ -1,34 +1,45 @@
 // noinspection JSUnusedGlobalSymbols
+import { getBrowser } from './puppeteer_browser'
 
-const puppeteer = require('puppeteer')
-// todo(michael) correct return type (see in mock-search/endpoint.js)
 class HachapuriivinoParser {
-    // todo(michael) delete name
-    static name = 'Хачапури & Вино'
 
     static async parse(message) {
-        const browser = await puppeteer.launch({ headless: true })
+        const browser = await getBrowser()
         const page = await browser.newPage()
-        await page.goto('https://www.hachapuriivino.ru/')
+        await page.goto('https://www.hachapuriivino.ru/', {
+            waitUntil: 'domcontentloaded'
+        })
+        await page.setViewport({
+            width: 1200,
+            height: 800
+        })
 
         const items = []
-        const elements = await page.$$('.goods-detailsbox', el => el)
+        const elements = await page.$$('.goodsbox', el => el)
         for (let i = 0; i < elements.length; i++) {
             const name = await elements[i].$eval(
                 '.goods-details-name',
                 el => el.innerText
             )
-            const description = await elements[i].$eval(
+            const price = await elements[i].$eval(
                 '.goods-details-price',
-                el => el.innerText
+                el => el.innerText.replace(/[^0-9]/g, '')
+            )
+            const imgLink = await elements[i].$eval(
+                '.goods-image',
+                el => el.src
             )
             if (name.toLowerCase().includes(message.toLowerCase()))
-                items.push({ name: name, description: description, foundBy: 'name' })
-            else if (description.toLowerCase().includes(message.toLowerCase()))
                 items.push({
                     name: name,
-                    description: description,
-                    foundBy: 'description'
+                    description: '',
+                    price: price,
+                    site: {
+                        name: 'Хачапури и вино',
+                        link: 'https://www.hachapuriivino.ru/',
+                    },
+                    link: '',
+                    imgLink: imgLink
                 })
         }
 
