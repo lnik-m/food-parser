@@ -1,5 +1,5 @@
 import styles from './SearchResBlock.module.scss'
-import {faImage, faArrowRight} from "@fortawesome/free-solid-svg-icons"
+import {faImage, faHeart, faArrowRight} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
 
@@ -10,7 +10,7 @@ const SearchResBlock = ({item}) => {
 
         <div className={styles.site}>
           <a href={item.site.link} target={'_blank'} rel={'noreferrer'}>{item.site.name}</a>
-          
+          <FontAwesomeIcon icon={faHeart} className={styles.heart} />
           <button>
           </button> 
         </div>
