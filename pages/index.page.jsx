@@ -3,7 +3,6 @@
 import styles from '../styles/pages/Home.module.scss'
 
 import SearchBlock from '../components/SearchBlock/SearchBlock'
-import Loading from '../components/Loading/Loading'
 
 
 const Home = () => {
