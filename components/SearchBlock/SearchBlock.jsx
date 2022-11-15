@@ -3,10 +3,11 @@ import { useState } from 'react'
 import { api } from '../../api'
 import SearchResGallery from '../SearchResGallery/SearchResGallery'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Loading from '../Loading/Loading'
 import { useDispatch } from 'react-redux'
 import { addSearch } from '../../slices/searchSlice'
+import Link from 'next/link'
 
  const SearchBlock = ({placeholder}) =>
  {
@@ -32,8 +33,14 @@ import { addSearch } from '../../slices/searchSlice'
        .then(() => setLoading(false))
    }
 
+   const clearLocalStorage = () => {
+     localStorage.clear()
+   }
+
     return (
       <div className={styles.container}>
+        <div className={styles.top}>
+
         <form onSubmit={handleSubmit} className={styles.searchForm}>
           <input className={styles.input}
             id="message"
@@ -47,6 +54,16 @@ import { addSearch } from '../../slices/searchSlice'
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </form>
+
+        <Link href={'/favourites'}>
+          <a><FontAwesomeIcon icon={faHeart} fontSize={"2rem"} color={"rgb(183,56,56)"}/></a>
+        </Link>
+
+        <button onClick={() => clearLocalStorage()}>
+          <FontAwesomeIcon icon={faTrash} fontSize={"2rem"} color={"gray"}/>
+        </button>
+
+        </div>
 
         {isLoading ?
           <Loading />

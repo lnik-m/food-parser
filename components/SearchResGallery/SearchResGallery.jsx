@@ -12,7 +12,7 @@ const SearchResGallery = ({data}) => {
       {data?.length > 0 ?
         <div className={styles.container}>
           {data.map(el => (
-            <SearchResBlock key={el.name} item={el} />
+            <SearchResBlock key={el?.name} item={el} />
           ))}
         </div>
       : (currentSearch.length < 3 && currentSearchNumber > 0) ?

@@ -13,15 +13,12 @@
 .header {
   grid-area: h;
   padding: 0.6rem;
-  background-color: #e6bddb;
+  background-color: #f1e0eb;
   border-radius: 4px;
   width: 100%;
-
-  .heart {
-    color: rgb(141 81 81);
-    float: right;
-    padding: 0.2rem;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .imgBlock {
