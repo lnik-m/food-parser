@@ -40,9 +40,10 @@ import { addSearch } from '../../slices/searchSlice'
             placeholder={placeholder}
             autoComplete={"off"}
             onChange={e => setMessage(e.target.value)}
+            disabled={isLoading}
           />
 
-          <button className={styles.button} type={'submit'}>
+          <button className={styles.button} type={'submit'} disabled={isLoading}>
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </form>
