@@ -9,9 +9,6 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <SearchBlock placeholder={'пицца'} />
-
-
-      
     </div>
   )
 }

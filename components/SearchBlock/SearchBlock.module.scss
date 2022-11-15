@@ -32,4 +32,13 @@
     grid-area: res;
 }
 
-
+@media (max-width: 900px) {
+    .searchForm {
+        width: 70vw;
+    }
+}
+@media (max-width: 600px) {
+    .searchForm {
+        width: 90vw;
+    }
+}

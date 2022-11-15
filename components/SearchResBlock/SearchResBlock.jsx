@@ -7,23 +7,28 @@ const SearchResBlock = ({item}) => {
   return (
       <div className={styles.container}>
 
-        <div className={styles.site}>
+        <div className={styles.header}>
           <a href={item.site.link} target={'_blank'} rel={'noreferrer'}>{item.site.name}</a>
           <FontAwesomeIcon icon={faHeart} className={styles.heart} />
           <button>
-          </button> 
+          </button>
         </div>
 
-        {item.imgLink.length > 0 ?
-          // todo(Maria) fix
-          <img src={item.imgLink} alt={'imgLink'} className={styles.img} />
-          :
-          <div className={styles.img}>
-            <FontAwesomeIcon icon={faImage} fontSize={'4rem'} color={'white'}/>
-            <p>фоточку не подгрузили :(</p>
-          </div>
-        }
+        <div className={styles.imgBlock}>
 
+          {item.imgLink.length > 0 ?
+            // todo(Maria) fix
+            <img src={item.imgLink} alt={'imgLink'} />
+            :
+            <div className={styles.noImg}>
+              <FontAwesomeIcon icon={faImage} fontSize={'4rem'} color={'white'}/>
+              <p>фоточку не подгрузили :(</p>
+            </div>
+          }
+        </div>
+
+
+        <div className={styles.info}>
         <div className={styles.title}>
           <b>Название: </b>{item.name}
         </div>
@@ -45,7 +50,7 @@ const SearchResBlock = ({item}) => {
             </a>
           }
         </div>
-
+        </div>
       </div>
   );
 }
