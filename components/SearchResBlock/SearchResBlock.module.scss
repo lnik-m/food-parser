@@ -42,10 +42,6 @@
   grid-area: i;
 }
 
-.title {}
-
-.description {}
-
 .priceAndLink {
   display: flex;
   justify-content: flex-end;
@@ -53,5 +49,4 @@
   .price {
     margin-right: 0.5rem;
   }
-  .link{}
 }

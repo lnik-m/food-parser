@@ -4,20 +4,18 @@ export const itemsSlice = createSlice({
   name: 'items',
 
   initialState: {
-    favouritesArr: [],
+    favouritesArr: []
   },
 
   reducers: {
     addFavourite: (state, action) => {
       state.favouritesArr = [action.payload, ...state.favouritesArr]
-
-      // localStorage.setItem("favourite", JSON.stringify(state.favouritesArr))
     },
     deleteFavourite: (state, action) => {
-      state.favouritesArr = [...state.favouritesArr.filter(el => el?.name!==action.payload?.name)]
-
-      // localStorage.setItem("favourite", JSON.stringify(state.favouritesArr))
-    },
+      state.favouritesArr = [
+        ...state.favouritesArr.filter(el => el?.name !== action.payload?.name)
+      ]
+    }
   }
 })
 

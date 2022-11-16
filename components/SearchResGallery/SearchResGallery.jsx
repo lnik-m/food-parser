@@ -4,8 +4,8 @@ import styles from './SearchResGallery.module.scss'
 
 
 const SearchResGallery = ({data}) => {
-  const currentSearch = useSelector(state => state.search.currentSearch)
-  const currentSearchNumber = useSelector(state => state.search.countSearch)
+  const currentSearch = useSelector(state => state.common.search.currentSearch)
+  const currentSearchNumber = useSelector(state => state.count.countSearch)
 
   return (
     <>
@@ -15,6 +15,8 @@ const SearchResGallery = ({data}) => {
             <SearchResBlock key={el?.name} item={el} />
           ))}
         </div>
+
+      : currentSearchNumber === 0 ? <></>
       : (currentSearch.length < 3 && currentSearchNumber > 0) ?
       <div>Ваш запрос должен состоять из 3 и более символов</div>
       : currentSearch.length > 3 ?

@@ -8,6 +8,7 @@ import Loading from '../Loading/Loading'
 import { useDispatch } from 'react-redux'
 import { addSearch } from '../../slices/searchSlice'
 import Link from 'next/link'
+import { countSearch, restartSearch } from '../../slices/countSearchSlice'
 
  const SearchBlock = ({placeholder}) =>
  {
@@ -26,6 +27,7 @@ import Link from 'next/link'
       }
 
      dispatch(addSearch(message))
+     dispatch(countSearch())
 
      api.search
        .doSearch(data)
@@ -35,6 +37,7 @@ import Link from 'next/link'
 
    const clearLocalStorage = () => {
      localStorage.clear()
+     location.reload()
    }
 
     return (
@@ -55,8 +58,8 @@ import Link from 'next/link'
           </button>
         </form>
 
-        <Link href={'/favourites'}>
-          <a><FontAwesomeIcon icon={faHeart} fontSize={"2rem"} color={"rgb(183,56,56)"}/></a>
+        <Link href={'/favourites'} >
+          <a><FontAwesomeIcon onClick={() => dispatch(restartSearch())} icon={faHeart} fontSize={"2rem"} color={"rgb(183,56,56)"}/></a>
         </Link>
 
         <button onClick={() => clearLocalStorage()}>

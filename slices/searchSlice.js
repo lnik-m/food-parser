@@ -5,18 +5,16 @@ export const searchSlice = createSlice({
 
   initialState: {
     currentSearch: '',
-    countSearch: 0,
-    searchArr: [],
+    searchArr: []
   },
 
   reducers: {
     addSearch: (state, action) => {
       state.currentSearch = action.payload
-      state.countSearch += 1
       if (!state.searchArr.includes(action.payload)) {
         state.searchArr = [action.payload, ...state.searchArr]
       }
-    },
+    }
   }
 })
 

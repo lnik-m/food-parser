@@ -1,11 +1,14 @@
 import '../styles/globals.scss'
-import { store } from '../store'
+import { store, persistor } from '../store'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 
 const MyApp = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <PersistGate loading={<div>Loading...</div>} persistor={persistor}>
+        <Component {...pageProps} />
+      </PersistGate>
     </Provider>
   )
 }

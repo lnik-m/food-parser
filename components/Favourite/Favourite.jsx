@@ -9,10 +9,10 @@ import { useState } from 'react'
 
 
 const Favourite = ({item}) => {
-  const favArr = useSelector(state => state.items.favouritesArr)
+  const favArr = useSelector(state => state.common.items.favouritesArr)
   const dispatch = useDispatch()
 
-  const [isFav, setIsFav] = useState(favArr?.includes(item))
+  const [isFav, setIsFav] = useState(!!favArr.filter(el => el?.name===item?.name).length)
 
   const handleClick = () => {
     if (isFav) {
