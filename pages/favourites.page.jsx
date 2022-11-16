@@ -8,7 +8,7 @@ import { faBackward } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 
 const Favourites = () => {
-  const favsArr = useSelector(state => state.common.items.favouritesArr)
+  const favsArr = useSelector(state => state.saved.items.favouritesArr)
 
   return (
     <div className={styles.container}>

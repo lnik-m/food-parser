@@ -27,7 +27,7 @@ const persistedReducer = persistReducer(persistConfig, combineReducers({
 
 export const store = configureStore({
   reducer: {
-    common: persistedReducer,
+    saved: persistedReducer,
     count: countReducer,
   },
   middleware: (getDefaultMiddleware) =>

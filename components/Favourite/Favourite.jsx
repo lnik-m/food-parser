@@ -9,7 +9,8 @@ import { useState } from 'react'
 
 
 const Favourite = ({item}) => {
-  const favArr = useSelector(state => state.common.items.favouritesArr)
+  const favArr = useSelector(state => state.saved.items.favouritesArr)
+
   const dispatch = useDispatch()
 
   const [isFav, setIsFav] = useState(!!favArr.filter(el => el?.name===item?.name).length)

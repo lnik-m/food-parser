@@ -4,7 +4,7 @@ import styles from './SearchResGallery.module.scss'
 
 
 const SearchResGallery = ({data}) => {
-  const currentSearch = useSelector(state => state.common.search.currentSearch)
+  const currentSearch = useSelector(state => state.saved.search.currentSearch)
   const currentSearchNumber = useSelector(state => state.count.countSearch)
 
   return (
