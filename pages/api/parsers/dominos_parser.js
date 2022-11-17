@@ -1,6 +1,6 @@
 import { autoScroll } from './utils'
 import { getBrowser } from './puppeteer_browser'
-
+// DominosParser
 class DominosParser {
   static async parse(message) {
     const browser = await getBrowser()
