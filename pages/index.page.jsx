@@ -1,14 +1,13 @@
 // noinspection JSUnusedGlobalSymbols
 
-import styles from '../styles/pages/Home.module.scss'
-
 import SearchBlock from '../components/SearchBlock/SearchBlock'
+import Layout from '../components/Layout/Layout'
 
 const Home = () => {
   return (
-    <div className={styles.container}>
+    <Layout>
       <SearchBlock placeholder={'пицца'} />
-    </div>
+    </Layout>
   )
 }
 

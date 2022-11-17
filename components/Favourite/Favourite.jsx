@@ -29,7 +29,7 @@ const Favourite = ({item}) => {
     <>
       <button onClick={handleClick} className={styles.heart}>
         {isFav ?
-          <FontAwesomeIcon icon={faHeart} color={"rgb(183,56,56)"}/> :
+          <FontAwesomeIcon icon={faHeart} color={"rgb(184 100 167)"}/> :
           <FontAwesomeIcon icon={faHeart} color={"white"}/>
         }
       </button>

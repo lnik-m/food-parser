@@ -1,17 +1,14 @@
-@import "../common";
-
 .container {
-  margin: 1rem 5rem;
+  margin: 5rem;
 }
-
 
 @media (max-width: 900px) {
   .container {
-    margin: 1rem 2.5rem;
+    margin: 5rem 2.5rem;
   }
 }
 @media (max-width: 600px) {
   .container {
-    margin: 1rem;
+    margin: 5rem 1rem;
   }
 }
