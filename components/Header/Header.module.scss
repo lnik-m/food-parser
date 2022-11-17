@@ -1,0 +1,42 @@
+.header {
+  position: fixed;
+  box-shadow: 0 4px 4px rgb(147 147 147 / 25%);
+  height: 50px;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: rgb(255 255 255 / 90%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerContent {
+  width: 60vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+}
+
+
+@media (max-width: 900px) {
+  .headerContent {
+    width: 70vw;
+  }
+}
+@media (max-width: 600px) {
+  .headerContent {
+    width: 80vw;
+  }
+}

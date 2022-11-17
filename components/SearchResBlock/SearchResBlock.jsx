@@ -16,7 +16,7 @@ const SearchResBlock = ({item}) => {
         <div className={styles.imgBlock}>
 
           {item?.imgLink?.length > 0 ?
-            // todo(Maria) fix
+            // eslint-disable-next-line @next/next/no-img-element
             <img src={item?.imgLink} alt={'imgLink'} />
             :
             <div className={styles.noImg}>
