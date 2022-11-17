@@ -11,7 +11,7 @@ const getBrowser = async () => {
         args: [...chromium.args, "--disable-web-security"],
         defaultViewport: chromium.defaultViewport,
         ignoreHTTPSErrors: true,
-        ignoreDefaultArgs: ['--disable-extensions'],
+        ignoreDefaultArgs: ['--disable-extensions']
       })
     } else {
       const puppeteer = require('puppeteer')

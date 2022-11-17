@@ -3,10 +3,12 @@ import { useState } from 'react'
 import { api } from '../../api'
 import SearchResGallery from '../SearchResGallery/SearchResGallery'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Loading from '../Loading/Loading'
 import { useDispatch } from 'react-redux'
 import { addSearch } from '../../slices/searchSlice'
+import Link from 'next/link'
+import { countSearch, restartSearch } from '../../slices/countSearchSlice'
 
  const SearchBlock = ({placeholder}) =>
  {
@@ -25,6 +27,7 @@ import { addSearch } from '../../slices/searchSlice'
       }
 
      dispatch(addSearch(message))
+     dispatch(countSearch())
 
      api.search
        .doSearch(data)
@@ -32,20 +35,38 @@ import { addSearch } from '../../slices/searchSlice'
        .then(() => setLoading(false))
    }
 
+   const clearLocalStorage = () => {
+     localStorage.clear()
+     location.reload()
+   }
+
     return (
       <div className={styles.container}>
+        <div className={styles.top}>
+
         <form onSubmit={handleSubmit} className={styles.searchForm}>
           <input className={styles.input}
             id="message"
             placeholder={placeholder}
             autoComplete={"off"}
             onChange={e => setMessage(e.target.value)}
+            disabled={isLoading}
           />
 
-          <button className={styles.button} type={'submit'}>
+          <button className={styles.button} type={'submit'} disabled={isLoading}>
             <FontAwesomeIcon icon={faSearch} />
           </button>
         </form>
+
+        <Link href={'/favourites'} >
+          <a><FontAwesomeIcon onClick={() => dispatch(restartSearch())} icon={faHeart} fontSize={"2rem"} color={"rgb(183,56,56)"}/></a>
+        </Link>
+
+        <button onClick={() => clearLocalStorage()}>
+          <FontAwesomeIcon icon={faTrash} fontSize={"2rem"} color={"gray"}/>
+        </button>
+
+        </div>
 
         {isLoading ?
           <Loading />

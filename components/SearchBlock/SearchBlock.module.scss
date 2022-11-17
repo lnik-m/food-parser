@@ -2,9 +2,16 @@
 
 .container {
     display: grid;
-    grid-template-areas: "search" "res";
+    grid-template-areas: "top" "res";
     justify-items: center;
     gap: 2rem;
+}
+
+.top {
+    grid-area: top;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .searchForm {
@@ -32,4 +39,13 @@
     grid-area: res;
 }
 
-
+@media (max-width: 900px) {
+    .searchForm {
+        width: 70vw;
+    }
+}
+@media (max-width: 600px) {
+    .searchForm {
+        width: 80vw;
+    }
+}

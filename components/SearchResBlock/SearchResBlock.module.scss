@@ -4,22 +4,49 @@
   border: 2px solid $violet;
   border-radius: 0.5rem;
   padding: 1rem;
+  display: grid;
+  grid-template-areas: "h" "ib" "i";
+  grid-template-rows: auto auto 1fr;
+  gap: 0.5rem;
 }
 
-.site {}
+.header {
+  grid-area: h;
+  padding: 0.6rem;
+  background-color: #f1e0eb;
+  border-radius: 4px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-.img {
-  background-color: $gray;
+.imgBlock {
+  grid-area: ib;
   text-align: center;
 }
 
-.title {}
+.noImg {
+  background-color: $gray;
+  height: 15rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  color: white;
+}
 
-.description {}
+
+.info {
+  grid-area: i;
+}
 
 .priceAndLink {
+  display: flex;
+  justify-content: flex-end;
 
-  .price {}
-
-  .link{}
+  .price {
+    margin-right: 0.5rem;
+  }
 }
