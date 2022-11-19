@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage'
 import {
   persistStore,
   persistReducer,
@@ -8,8 +8,8 @@ import {
   PAUSE,
   PERSIST,
   PURGE,
-  REGISTER,
-} from 'redux-persist';
+  REGISTER
+} from 'redux-persist'
 
 import searchReducer from './slices/searchSlice'
 import itemsReducer from './slices/itemsSlice'
@@ -17,25 +17,28 @@ import countReducer from './slices/countSearchSlice'
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage
 }
 
-const persistedReducer = persistReducer(persistConfig, combineReducers({
-  items: itemsReducer,
-  search: searchReducer,
-}))
+const persistedReducer = persistReducer(
+  persistConfig,
+  combineReducers({
+    items: itemsReducer,
+    search: searchReducer
+  })
+)
 
 export const store = configureStore({
   reducer: {
     saved: persistedReducer,
-    count: countReducer,
+    count: countReducer
   },
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
-});
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+      }
+    })
+})
 
-export const persistor = persistStore(store);
+export const persistor = persistStore(store)
