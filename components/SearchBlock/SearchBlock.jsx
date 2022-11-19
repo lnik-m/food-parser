@@ -44,6 +44,7 @@ const SearchBlock = ({ placeholder }) => {
             autoComplete={'off'}
             onChange={e => setMessage(e.target.value)}
             disabled={isLoading}
+            autoFocus
           />
 
           <button
