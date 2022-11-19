@@ -1,8 +1,8 @@
 // noinspection JSUnusedGlobalSymbols
-import { Get, Post } from './utils'
 import { getBrowser } from './puppeteer_browser'
 
 class HachapuriivinoParser {
+
     static async parse(message) {
         const browser = await getBrowser()
         const page = await browser.newPage()
@@ -21,31 +21,27 @@ class HachapuriivinoParser {
                 '.goods-details-name',
                 el => el.innerText
             )
-            const price = await elements[i].$eval('.goods-details-price', el =>
-                el.innerText.replace(/[^0-9]/g, '')
+            const price = await elements[i].$eval(
+                '.goods-details-price',
+                el => el.innerText.replace(/[^0-9]/g, '')
             )
-            const imgLink = await elements[i].$eval('.goods-image', el => el.src)
-
-            const data = {
-                name: name,
-                description: '',
-                price: price,
-                site: {
-                    name: 'Хачапури и вино',
-                    link: 'https://www.hachapuriivino.ru/'
-                },
-                link: '',
-                imgLink: imgLink
-            }
-
-            Post(data)
+            const imgLink = await elements[i].$eval(
+                '.goods-image',
+                el => el.src
+            )
+            if (name.toLowerCase().includes(message.toLowerCase()))
+                items.push({
+                    name: name,
+                    description: '',
+                    price: price,
+                    site: {
+                        name: 'Хачапури и вино',
+                        link: 'https://www.hachapuriivino.ru/',
+                    },
+                    link: '',
+                    imgLink: imgLink
+                })
         }
-
-        const places = await Get()
-        places.data.forEach(x => {
-            if (x.data.name.toLowerCase().includes(message.toLowerCase()))
-                items.push(x.data)
-        })
 
         await browser.close()
         return items

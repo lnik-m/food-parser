@@ -8,7 +8,7 @@ const getBrowser = async () => {
       return await puppeteerCore.launch({
         headless: true,
         executablePath,
-        args: [...chromium.args, "--disable-web-security"],
+        args: [...chromium.args, '--disable-web-security'],
         defaultViewport: chromium.defaultViewport,
         ignoreHTTPSErrors: true,
         ignoreDefaultArgs: ['--disable-extensions']
