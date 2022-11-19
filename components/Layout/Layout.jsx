@@ -1,7 +1,7 @@
 import styles from './Layout.module.scss'
 import Header from '../Header/Header'
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <>
       <Header className={styles.header} />

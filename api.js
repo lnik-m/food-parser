@@ -23,6 +23,6 @@ const registerEndpoint = (path, method = 'get') => {
 export const api = {
   search: {
     doSearch: registerEndpoint('/search', 'post'),
-    mockSearch: registerEndpoint('/mock-search'),
+    mockSearch: registerEndpoint('/mock-search')
   }
 }
