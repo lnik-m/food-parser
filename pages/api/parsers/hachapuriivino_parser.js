@@ -1,9 +1,8 @@
 // noinspection JSUnusedGlobalSymbols
-import { Get, Post } from './utils'
-import { getBrowser } from './puppeteer_browser'
+import { getBrowser } from './utils/utils'
 
 class HachapuriivinoParser {
-  static async parse(message) {
+  static async parse() {
     const browser = await getBrowser()
     const page = await browser.newPage()
     await page.goto('https://www.hachapuriivino.ru/', {
@@ -15,7 +14,7 @@ class HachapuriivinoParser {
     })
 
     const items = []
-    const elements = await page.$$('.goodsbox', el => el)
+    const elements = await page.$$('.goodsbox')
     for (let i = 0; i < elements.length; i++) {
       const name = await elements[i].$eval(
         '.goods-details-name',
@@ -25,8 +24,7 @@ class HachapuriivinoParser {
         el.innerText.replace(/[^0-9]/g, '')
       )
       const imgLink = await elements[i].$eval('.goods-image', el => el.src)
-
-      const data = {
+      items.push({
         name: name,
         description: '',
         price: price,
@@ -36,16 +34,8 @@ class HachapuriivinoParser {
         },
         link: '',
         imgLink: imgLink
-      }
-
-      Post(data)
+      })
     }
-
-    const places = await Get()
-    places.data.forEach(x => {
-      if (x.data.name.toLowerCase().includes(message.toLowerCase()))
-        items.push(x.data)
-    })
 
     await browser.close()
     return items
