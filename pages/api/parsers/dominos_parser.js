@@ -15,12 +15,11 @@ class DominosParser {
 
     await autoScroll(page)
     const items = await this.findItems(page).then(pizzas =>
-      pizzas
-        .filter(
-          pizza =>
-            this.checkIncluding(pizza.name, message) ||
-            this.checkIncluding(pizza.description, message)
-        )
+      pizzas.filter(
+        pizza =>
+          this.checkIncluding(pizza.name, message) ||
+          this.checkIncluding(pizza.description, message)
+      )
     )
     await page.close()
     await browser.close()
