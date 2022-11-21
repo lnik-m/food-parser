@@ -1,6 +1,5 @@
 // noinspection JSUnusedGlobalSymbols
-import { Post } from './utils'
-import { getBrowser } from './puppeteer_browser'
+import { getBrowser } from './utils/utils'
 
 class BahromaParser {
   static async parse() {
@@ -28,8 +27,7 @@ class BahromaParser {
         '.catalog-item__image > img',
         el => el.src
       )
-
-      const data = {
+      items.push({
         name: name,
         description: '',
         price: price,
@@ -39,9 +37,7 @@ class BahromaParser {
         },
         link: '',
         imgLink: imgLink
-      }
-
-      Post(data)
+      })
     }
 
     await browser.close()

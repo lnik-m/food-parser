@@ -1,8 +1,8 @@
-import { autoScroll } from './utils'
-import { getBrowser } from './puppeteer_browser'
+import { autoScroll, getBrowser } from './utils/utils'
+
 // DominosParser
 class DominosParser {
-  static async parse(message) {
+  static async parse() {
     const browser = await getBrowser()
     const page = await browser.newPage()
     await page.goto('https://spb.dominospizza.ru/', {
@@ -14,20 +14,10 @@ class DominosParser {
     })
 
     await autoScroll(page)
-    const items = await this.findItems(page).then(pizzas =>
-      pizzas.filter(
-        pizza =>
-          this.checkIncluding(pizza.name, message) ||
-          this.checkIncluding(pizza.description, message)
-      )
-    )
+    const items = await this.findItems(page)
     await page.close()
     await browser.close()
     return items
-  }
-
-  static checkIncluding(source, element) {
-    return source.toLowerCase().includes(element.toLowerCase())
   }
 
   static async findItems(page) {
