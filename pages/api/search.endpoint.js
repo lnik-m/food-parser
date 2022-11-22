@@ -12,7 +12,6 @@ const searchHandler = async (req, res) => {
         )
         .sort(sortByPrice)
 
-      console.log(data)
       res.status(200).json({ data })
     } catch (e) {
       console.log(e)
