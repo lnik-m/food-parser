@@ -15,10 +15,14 @@ export const itemsSlice = createSlice({
       state.favouritesArr = [
         ...state.favouritesArr.filter(el => el?.name !== action.payload?.name)
       ]
+    },
+    clearFavourite: state => {
+      state.favouritesArr = []
     }
   }
 })
 
-export const { addFavourite, deleteFavourite } = itemsSlice.actions
+export const { addFavourite, deleteFavourite, clearFavourite } =
+  itemsSlice.actions
 
 export default itemsSlice.reducer

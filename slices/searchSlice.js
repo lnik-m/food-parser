@@ -14,10 +14,14 @@ export const searchSlice = createSlice({
       if (!state.searchArr.includes(action.payload)) {
         state.searchArr = [action.payload, ...state.searchArr]
       }
+    },
+    clearSearchHistory: state => {
+      state.currentSearch = ''
+      state.searchArr = []
     }
   }
 })
 
-export const { addSearch } = searchSlice.actions
+export const { addSearch, clearSearchHistory } = searchSlice.actions
 
 export default searchSlice.reducer
