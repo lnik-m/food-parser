@@ -18,7 +18,7 @@ const SearchResGallery = ({ data }) => {
         <></>
       ) : currentSearch.length < 3 && currentSearchNumber > 0 ? (
         <div>Ваш запрос должен состоять из 3 и более символов</div>
-      ) : currentSearch.length > 3 ? (
+      ) : currentSearch.length >= 3 ? (
         <div>
           По вашему запросу <strong>&quot;{currentSearch}&quot;</strong> ничего
           не найдено
