@@ -24,5 +24,6 @@ export const api = {
   search: {
     doSearch: registerEndpoint('/search', 'post'),
     mockSearch: registerEndpoint('/mock-search'),
+    updateDb:  registerEndpoint('/update-db'),
   }
 }

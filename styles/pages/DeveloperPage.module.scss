@@ -1,0 +1,19 @@
+.container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-areas: "b" "l";
+  grid-template-rows: auto 1fr;
+}
+
+.button {
+  font-size: 2.1rem;
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  grid-area: b;
+}
+
+.loading {
+  grid-area: l;
+}
