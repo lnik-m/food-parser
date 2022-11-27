@@ -64,6 +64,15 @@ const SearchBlock = ({ placeholder }) => {
         </form>
       </div>
 
+      <div id='historySearch'>
+        {searchArr?.map(item => 
+          <div>
+            <ul>
+              <li  className={styles.li}><a href=''>{item}</a></li>
+            </ul>
+          </div>)} 
+      </div>
+
       {isLoading ? (
         <Loading />
       ) : (

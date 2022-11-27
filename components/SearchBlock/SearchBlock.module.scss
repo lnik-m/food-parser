@@ -29,10 +29,13 @@
     width: 100%;
 }
 
-.datalist {
-    box-sizing: border-box;
-    width: 100%;
+.li {
+    border: 2px $violet solid; 
+    display:inline-block;
+    width: 20rem;
+    height: 1.8rem;
 }
+
 
 .button {
     grid-area: btn;
