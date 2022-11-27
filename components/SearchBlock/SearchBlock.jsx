@@ -5,7 +5,7 @@ import SearchResGallery from '../SearchResGallery/SearchResGallery'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import Loading from '../Loading/Loading'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addSearch } from '../../slices/searchSlice'
 import { countSearch } from '../../slices/countSearchSlice'
 
@@ -13,6 +13,7 @@ const SearchBlock = ({ placeholder }) => {
   const [message, setMessage] = useState('')
   const [data, setData] = useState([])
   const [isLoading, setLoading] = useState(false)
+  const searchArr = useSelector(state => state.saved.search.searchArr)
 
   const dispatch = useDispatch()
 
@@ -38,6 +39,8 @@ const SearchBlock = ({ placeholder }) => {
       <div className={styles.top}>
         <form onSubmit={handleSubmit} className={styles.searchForm}>
           <input
+            list="historySearch"
+            type="text"
             className={styles.input}
             id="message"
             placeholder={placeholder}
@@ -46,6 +49,10 @@ const SearchBlock = ({ placeholder }) => {
             disabled={isLoading}
             autoFocus
           />
+
+          <datalist id="historySearch">
+            {[searchArr.map(item => <option key={item} value={item}></option>)]}
+          </datalist>
 
           <button
             className={styles.button}

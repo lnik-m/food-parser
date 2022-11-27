@@ -29,6 +29,12 @@
     width: 100%;
 }
 
+.datalist {
+    box-sizing: border-box;
+    width: 100%;
+    position: absolute;
+}
+
 .button {
     grid-area: btn;
     color: $violet;
