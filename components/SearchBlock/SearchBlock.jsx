@@ -33,14 +33,14 @@ const SearchBlock = ({ placeholder }) => {
       .then(r => setData(r.data))
       .then(() => setLoading(false))
   }
-  
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
         <form onSubmit={handleSubmit} className={styles.searchForm}>
           <input
-            list='historySearch'
-            type='text'
+            list="historySearch"
+            type="text"
             className={styles.input}
             id="message"
             placeholder={placeholder}
@@ -50,8 +50,8 @@ const SearchBlock = ({ placeholder }) => {
             autoFocus
           />
 
-          <datalist id='historySearch'>
-            {[searchArr.map(item => <option key={item} value={item}></option>)]} 
+          <datalist id="historySearch">
+            {[searchArr.map(item => <option key={item} value={item}></option>)]}
           </datalist>
 
           <button
@@ -64,13 +64,16 @@ const SearchBlock = ({ placeholder }) => {
         </form>
       </div>
 
-      <div id='historySearch'>
-        {searchArr?.map(item => 
-          <div>
+      <div id="historySearch">
+        {searchArr?.map(item => (
+          <div key={item}>
             <ul>
-              <li  className={styles.li}><a href=''>{item}</a></li>
+              <li className={styles.li}>
+                <a href="">{item}</a>
+              </li>
             </ul>
-          </div>)} 
+          </div>
+        ))}
       </div>
 
       {isLoading ? (
