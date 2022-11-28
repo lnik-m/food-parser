@@ -1,10 +1,36 @@
-# Сервис для подбора дешевых блюд food-parser
+# Сервис для подбора дешевых блюд НайдуЕду
 ## Участники проекта:
 - Мельникова Мария
 - Никитина Ксения
 - Ингеройнен Полина
 - Ларионов Михаил
 
+## Описание проекта:
+Наш сервис - это парсер-поисковик, подбирающий блюда по ключевым словам.
+В проекте реализованы:
+- поиск с историей поиска
+- возможность добавления в избранное
+- сохранение данных в localStorage
+- адаптивная верстка для мобильной версии
+- страница избранного
+- очистка избранного и истории поиска
+- подключение к NoSQL базе данных faunadb, в которой
+  сохраняются результаты парсинга
+- парсинг сайтов Бахрома, Доминос, Хачапури и вино
+- возможность обновления бд с фронта
+
+
+## Built with
+* JavaScript
+* React
+* Next.js
+* Redux
+* SASS/SCSS
+* FaunaDB (NoSQL database)
+* Fortawesome
+
+## Deployed version
+https://food-parser.vercel.app/
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -36,18 +62,3 @@ For linting code:
 ```bash
 yarn lint
 ```
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
