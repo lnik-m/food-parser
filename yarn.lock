@@ -2566,6 +2566,11 @@ raw-body@2.5.1:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+react-datalist-input@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-datalist-input/-/react-datalist-input-3.2.0.tgz#a13cbf5d2460cf006727ef26b169d9b3fc047317"
+  integrity sha512-AeikEzWHjfxaTWG54g+zLNF1EGFLeL/bD05w+CEwWNjjkO5LZKFXRaEHwFE5XpbBFgwpRPF3nPx4bL5D4cGKeQ==
+
 react-dom@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"

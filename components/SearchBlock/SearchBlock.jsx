@@ -8,6 +8,7 @@ import Loading from '../Loading/Loading'
 import { useDispatch, useSelector } from 'react-redux'
 import { addSearch } from '../../slices/searchSlice'
 import { countSearch } from '../../slices/countSearchSlice'
+import DatalistInput from 'react-datalist-input'
 
 const SearchBlock = ({ placeholder }) => {
   const [message, setMessage] = useState('')
@@ -34,25 +35,34 @@ const SearchBlock = ({ placeholder }) => {
       .then(() => setLoading(false))
   }
 
+  const items = []
+  for (let i=0; i<searchArr.length; i++) {
+    items.push({
+      id: i,
+      value: searchArr[i].toString(),
+    })
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
         <form onSubmit={handleSubmit} className={styles.searchForm}>
-          <input
-            list="historySearch"
-            type="text"
-            className={styles.input}
-            id="message"
-            placeholder={placeholder}
-            autoComplete={'off'}
-            onChange={e => setMessage(e.target.value)}
-            disabled={isLoading}
-            autoFocus
+          <DatalistInput
+            id={'datalist'}
+            value={message}
+            setValue={setMessage}
+            label={placeholder}
+            showLabel={false}
+            items={items}
+            onSelect={(item) => setMessage(item.value)}
+            aria-disabled={isLoading}
+            inputProps={{
+              className: styles.input,
+            }}
+            listboxOptionProps={{
+              className: styles.listboxOpt,
+            }}
           />
-
-          <datalist id="historySearch">
-            {[searchArr.map(item => <option key={item} value={item}></option>)]}
-          </datalist>
 
           <button
             className={styles.button}
@@ -64,23 +74,12 @@ const SearchBlock = ({ placeholder }) => {
         </form>
       </div>
 
-      <div id="historySearch">
-        {searchArr?.map(item => (
-          <div key={item}>
-            <ul>
-              <li className={styles.li}>
-                <a href="">{item}</a>
-              </li>
-            </ul>
-          </div>
-        ))}
-      </div>
-
       {isLoading ? (
         <Loading />
       ) : (
         <SearchResGallery className={styles.result} data={data} />
       )}
+
     </div>
   )
 }

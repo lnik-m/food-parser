@@ -1,4 +1,4 @@
-@import "styles/common";
+@import 'styles/common';
 
 .container {
     display: grid;
@@ -26,21 +26,23 @@
 }
 
 .input {
-    width: 100%;
+    width: 40vw;
+    padding: 0.3rem 0 0 0;
+    align-self: center;
 }
 
-.li {
-    border: 2px $violet solid; 
-    display:inline-block;
-    width: 20rem;
-    height: 1.8rem; 
+.listboxOpt {
+    &:hover {
+        background-color: #f1e0eb;
+        cursor: pointer;
+    }
 }
-
 
 .button {
     grid-area: btn;
     color: $violet;
     font-size: 1.5rem;
+    align-self: flex-start;
 }
 
 .result {
@@ -51,9 +53,15 @@
     .searchForm {
         width: 70vw;
     }
+    .input {
+        width: 60vw;
+    }
 }
 @media (max-width: 600px) {
     .searchForm {
         width: 80vw;
+    }
+    .input {
+        width: 65vw;
     }
 }
